@@ -1,4 +1,4 @@
-📝 #NoteManager  
+📝 # NoteManager  
 **NoteManager** is a lightweight, pointer-based C++ notepad application designed for hands-on memory management and modular file operations. It supports note creation, editing, deletion, timestamped saving, and keyword-based search—all while keeping the code low-level and educational.
 
 🔧 # Features  
