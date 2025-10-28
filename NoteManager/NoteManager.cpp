@@ -203,10 +203,46 @@ void saveAllNotes(const std::vector<char*>& notes, const std::string& baseName)
     }
 }
 
+void searchNotes(const std::vector<char*>& notes)
+{
+    if (notes.empty())
+    {
+        std::cout << "No notes to search.\n";
+        return;
+    }
+
+    std::string keyword;
+    std::cout << "Enter the keyword: ";
+    std::getline(std::cin, keyword);
+
+    std::cout << "\n--- Search Results ---\n";
+    bool found = false;
+
+    for (size_t i = 0; i < notes.size(); i++)
+    {
+        std::string noteStr(notes[i]);
+        if (noteStr.find(keyword) != std::string::npos)
+        {
+            std::cout << i + 1 << ". " << notes[i] << "\n";
+            found = true;
+        }
+    }
+
+    if (!found)
+    {
+        std::cout << "No notes contain the keyword '" << keyword << "'.\n";
+    }
+
+    std::cout << "----------------------\n";
+}
+
 void loadNotesFromFile(std::vector<char*>& notes, std::string rawFilename)
 {
     std::string filename = rawFilename;
-
+    if (filename.size() < 4 || filename.substr(filename.size() - 4) != ".txt")
+    {
+        filename += ".txt";
+    }
     std::ifstream file("Notes/" + filename);
     if (!file)
     {
@@ -215,11 +251,24 @@ void loadNotesFromFile(std::vector<char*>& notes, std::string rawFilename)
     }
 
     std::string line;
+    bool skipNext = false;
+    
     while (std::getline(file, line))
     {
-        char* loadedNote = new char[line.size() + 1];
-        strcpy_s(loadedNote, line.size() + 1, line.c_str());
-        notes.push_back(loadedNote);
+        if (!line.empty() && line.front() == '[' && line.find(']') != std::string::npos)
+        {
+            skipNext = true;
+            continue;
+        }
+
+        if (skipNext || !line.empty())
+        {
+            char* loadedNote = new char[line.size() + 1];
+            strcpy_s(loadedNote, line.size() + 1, line.c_str());
+            notes.push_back(loadedNote);
+            skipNext = false;
+        }
+       
     }
 
     file.close();
@@ -240,7 +289,8 @@ int main(int argc, char* argv[])
         std::cout << "5. Delete note\n";
         std::cout << "6. Save all notes\n";
         std::cout << "7. Load notes from file\n";
-        std::cout << "8. Exit\n";
+        std::cout << "8. Search notes\n";
+        std::cout << "9. Exit\n";
         int choice = getChoice();
         
         if (choice == 1)
@@ -332,6 +382,10 @@ int main(int argc, char* argv[])
             loadNotesFromFile(notes, filename);
         }
         else if (choice == 8)
+        {
+            searchNotes(notes);
+        }
+        else if (choice == 9)
         {
             break;
         }
