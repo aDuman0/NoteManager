@@ -9,7 +9,7 @@
   Users can create new notes, view existing ones, and update content by index.
 
 - **Save notes to disk with timestamp**
-  Each note is saved to a .txt file with an automatic [dd-mm-yyyy_HH-MM] timestamp prepended to the content.
+  Each note is saved to a .txt file with an automatic [dd-mm-yyyy HH-MM] timestamp prepended to the content.
 
 - **File conflict resolution**
   When saving to a file that already exists, users are prompted to:
