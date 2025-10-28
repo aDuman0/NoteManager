@@ -1,7 +1,7 @@
 📝 # NoteManager  
 **NoteManager** is a lightweight, pointer-based C++ notepad application designed for hands-on memory management and modular file operations. It supports note creation, editing, deletion, timestamped saving, and keyword-based search—all while keeping the code low-level and educational.
 
-🔧 # Features
+🔧 # Features  
 - **Pointer-based note storage**
   Notes are stored using raw char* pointers, emphasizing manual memory management and C-style string handling.
 
@@ -29,17 +29,17 @@
 - **Keyword-based search**
   Users can search for specific words across all notes. Matching notes are displayed with their index and content.
 
-🚀 # Getting Started
+🚀 # Getting Started  
 Compile with a C++17-compatible compiler. No external dependencies required.
 ```
 g++ -std=c++17 NoteManager.cpp -o NoteManager
 ./NoteManager
 ```
 
-📁 # Folder Structure
+📁 # Folder Structure  
 All saved notes are stored in a `Notes/` directory, which is automatically created if it doesn't exist.
 
-🧠 # Why Use This Project?
+🧠 # Why Use This Project?  
 This project is ideal for:
 
 - Practicing pointer manipulation and manual memory management
