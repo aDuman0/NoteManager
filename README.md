@@ -13,9 +13,9 @@
 
 - **File conflict resolution**
   When saving to a file that already exists, users are prompted to:
-  1. Overwrite – replace the existing file
-  2. Rename – choose a new filename
-  3. Cancel – abort the save
+  -  Overwrite – replace the existing file
+  -  Rename – choose a new filename
+  -  Cancel – abort the save
 
 - **Delete notes**
   Notes can be removed by selecting their index from the list.
